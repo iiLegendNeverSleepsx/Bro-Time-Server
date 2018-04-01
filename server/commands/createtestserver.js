@@ -12,7 +12,7 @@ module.exports = {
     realGuild.channels.forEach(async function(channel) {
       await testGuild.createChannel(reverse(channel.name), channel.type, channel.positionOverwrites).then(newChannel => {
         newChannel.setTopic(channel.topic);
-        newChannel.setParent(testGuild.channels.find("name", reverse(channel.parent.name));
+        newChannel.setParent(testGuild.channels.find("name", reverse(channel.parent.name)));
         newChannel.setPosition(channel.position);
       });
     });

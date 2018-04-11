@@ -12,6 +12,11 @@ module.exports = {
 			var loopNumber = 0;
 			var offlineInRole;
 			if (multiColorRole.hexColor === "#000001") {
+				call.message.reply("The multicolored role is now in effect.").catch(() => {
+					call.message.author
+						.send(`You attempted to use the \`togglemulticolor\` role in ${call.message.channel}, but I can not chat there.`)
+						.catch(function() {});
+				});
 				setInterval(function() {
 					offlineInRole = multiColorRole.members.filter(member => member.presence.status === "offline");
 					if (offlineInRole.size !== multiColorRole.members.size) {

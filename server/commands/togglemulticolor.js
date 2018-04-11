@@ -14,7 +14,7 @@ module.exports = {
 			if (multiColorRole.hexColor === "#000001") {
 				call.message.reply("The multicolored role is now in effect.").catch(() => {
 					call.message.author
-						.send(`You attempted to use the \`togglemulticolor\` role in ${call.message.channel}, but I can not chat there.`)
+						.send(`The multicolored role is now in effect. Note that I can not chat in ${call.message.channel}.`)
 						.catch(function() {});
 				});
 				setInterval(function() {

@@ -9,10 +9,14 @@ module.exports = {
 			"DarkViolet", "Gold"
 		];
 		var loopNumber = 0;
+		var offlineInRole;
 		setInterval(function() {
-			multiColorRole.setColor(realGuild.roles.find("name", colors[loopNumber]).hexColor);
-			loopNumber = loopNumber + 1;
-			if(loopNumber === colors.length) loopNumber = 0;
+			offlineInRole = multiColorRole.members.filter(member => member.presence.status === "offline");
+			if (offlineInRole.size !== multiColorRole.members.size) {
+				multiColorRole.setColor(realGuild.roles.find("name", colors[loopNumber]).hexColor).catch(function(){});
+				loopNumber = loopNumber + 1;
+				if(loopNumber === colors.length) loopNumber = 0;
+			}
 		}, 1000);
 	}
 };

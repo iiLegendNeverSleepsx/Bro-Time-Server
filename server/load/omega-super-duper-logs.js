@@ -137,9 +137,28 @@ module.exports = {
 					var superLogChannel = testGuild.channels.get("433800038213353483");
 					var roleUpdateEmbed = new Discord.RichEmbed()
 						.setAuthor(`${executor.tag} (${executor.id})`)
-						.setColor(role.hexColor)
+						.setColor("GREEN")
 						.addField("Role Create", `Name: \`${role.name}\`\nColor: \`${role.hexColor}\`\nHoist: \`${role.hoist}\`\n` +
-							`Mentionable: \`${role.mentionable}\``);
+							`Mentionable: \`${role.mentionable}\`\nID: \`${role.id}\``);
+					superLogChannel.send({
+						embed: roleUpdateEmbed
+					});
+				});
+			}
+		});
+
+		client.on("roleDelete", (role) => {
+			if (role.guild.id === realGuild.id) {
+				realGuild.fetchAuditLogs({
+					type: "ROLE_DELETE",
+				}).then(logs => {
+					var executor = logs.entries.first().executor;
+					var superLogChannel = testGuild.channels.get("433800038213353483");
+					var roleUpdateEmbed = new Discord.RichEmbed()
+						.setAuthor(`${executor.tag} (${executor.id})`)
+						.setColor(role.hexColor)
+						.addField("Role Delete", `Name: \`${role.name}\`\nColor: \`${role.hexColor}\`\nHoist: \`${role.hoist}\`\n` +
+							`Mentionable: \`${role.mentionable}\`\nID: \`${role.id}\``);
 					superLogChannel.send({
 						embed: roleUpdateEmbed
 					});

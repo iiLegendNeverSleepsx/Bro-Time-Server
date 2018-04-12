@@ -88,7 +88,7 @@ module.exports = {
 			if(channel.type !== "dm" && channel.type !== "group") {
 				if(channel.guild.id === realGuild.id) {
 					testGuild.createChannel(channel.name, channel.type).then(function(newChannel) {
-						newChannel.setParent(testGuild.channels.find("name", newChannel.parent.name));
+						if (newChannel.parent != null) newChannel.setParent(testGuild.channels.find("name", newChannel.parent.name));
 					});
 				}
 			}

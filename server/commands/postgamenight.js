@@ -40,29 +40,30 @@ module.exports = {
 			const game = await call.requestInput(0, "What is the game you want to host on?", 60000);
 			if (game.message.content === "cancel") return call.message.channel.send("Canceled prompt.").catch(function(){});
 			var gamerole;
-			if (games.includes(game)) {
-				gamerole = call.message.guild.roles.find(r=> r.name.toLowerCase() === game.toLowerCase());
+			if (games.includes(game.message.content)) {
+				gamerole = call.message.guild.roles.find(r=> r.name.toLowerCase() === game.message.content.toLowerCase());
 			} else {
-				gamerole = game;
+				gamerole = game.message.content;
 			}
 			const link = await call.requestInput(0, "What is the link of your game? If none respond with `none`.", 60000);
 			if (link.message.content === "cancel") return call.message.channel.send("Canceled Prompt.").catch(function(){});
 			var islink = isURL(link);
-			if (islink || link.toLowerCase() == "none") {
+			if (islink || link.message.content.toLowerCase() == "none") {
 				var varlink;
-				if (link.toLowerCase() == "none") {
+				if (link.message.content.toLowerCase() == "none") {
 					varlink = "`none`";
 				} else {
-					varlink = link;
+					varlink = link.message.content;
 				}
 				const other = await call.requestInput(0, "Any other information? If none respond with `none`.", 60000);
 				if (other.message.content == "cancel") return call.message.channel.send("**Canceled Prompt.**").catch(function(){});
 				let annchannel = call.message.guild.channels.find("name", "announcements");
-				if (games.includes(game)) {
+				if (games.includes(game.message.content)) {
 					gamerole.setMentionable(true).then(() => {
-						annchannel.send(`**Game:** ${gamerole}\n**Link:** ${varlink}\n**Other Information:** \`${other}\`\n*Posted by ${call.message.author}*`)
+						annchannel
+							.send(`**Game:** ${gamerole}\n**Link:** ${varlink}\n**Other Information:** \`${other.message.content}\`\n*Posted by ${call.message.author}*`)
 							.then(function(){
-								game.setMentionable(false).catch(function(){
+								gamerole.setMentionable(false).catch(function(){
 									call.message.author
 										.send(`Could not change the role mentionability of ${gamerole.name} back to normal. Please do this manually.`)
 										.catch(function(){});

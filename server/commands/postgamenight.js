@@ -14,6 +14,7 @@ function isURL(str) {
 	// credit to Tom Gullen https://stackoverflow.com/users/356635/tom-gullen from stackoverflow <3
 }
 
+/*
 async function awaitReply(message, question, limit = 60000){
 	const filter = m => m.author.id === message.author.id;
 	message.reply(question).then(async function(){
@@ -29,7 +30,7 @@ async function awaitReply(message, question, limit = 60000){
 		return "cancel";
 	});
 }
-
+*/
 
 module.exports = {
 	id: "postgamenight",

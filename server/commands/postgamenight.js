@@ -60,7 +60,8 @@ module.exports = {
 				let annchannel = call.message.guild.channels.find("name", "announcements");
 				if (games.includes(game.message.content)) {
 					gamerole.setMentionable(true).then(() => {
-						annchannel.send(`**Game:** ${gamerole}\n**Link:** ${varlink}\n**Other Information:** \`${other.message.content}\`\n*Posted by ${call.message.author}*`)
+						annchannel
+							.send(`**Game:** ${gamerole}\n**Link:** ${varlink}\n**Other Information:** \`${other.message.content}\`\n*Posted by ${call.message.author}*`)
 							.then(function(){
 								gamerole.setMentionable(false).catch(function(){
 									call.message.author

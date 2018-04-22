@@ -29,7 +29,9 @@ module.exports = {
 					messageToSend = messageToSend + `\nRole(s) added to \`${target.user.tag}\`: \`${rolesToAdd.map(rM => rM.name).join("`, `")}\``;
 				}
 				if (rolesToRemove.length !== 0) {
-					target.removeRoles(rolesToRemove).catch(function() {});
+					rolesToRemove.forEach(roleToRemove => {
+						target.removeRole(roleToRemove).catch(function() {});
+					});
 					messageToSend = messageToSend + `\nRole(s) removed from \`${target.user.tag}\`: \`${rolesToRemove.map(rM => rM.name).join("`, `")}\``;
 				}
 				if (messageToSend !== "") {

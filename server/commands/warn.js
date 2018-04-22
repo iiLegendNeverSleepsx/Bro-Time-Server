@@ -2,6 +2,9 @@ const Discord = require("discord.js");
 
 module.exports = {
 	id: "warn",
+	description: "Sends the user a dm with the supplied reason.",
+	arguments: "(user) [reason]",
+	requires: "Moderator permissions",
 	load: () => {},
 	execute: (call) => {
 		const rawContent = call.params.readRaw();

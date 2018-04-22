@@ -6,7 +6,7 @@ module.exports = {
 		const paramaterOne = call.params.readRaw().split(" ")[0];
 		const paramaterTwo = call.params.readRaw().split(" ")[1];
 		const modRoles = ["436013049808420866", "436013613568884736", "402175094312665098", "330919872630358026"];
-		var options = ["removeall", "all", "bots", "humans", "in", "status"];
+		var options = ["removeall", "all", "bots", "humans", "in"];
 		var timeEstimate = "";
 		var target = null;
 		var usersToRole;

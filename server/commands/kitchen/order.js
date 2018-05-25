@@ -30,7 +30,7 @@ module.exports = {
 					`**Order:** ${order}\n` +
 					`**Customer:** ${call.message.author.tag} (${call.message.author.id})\n` +
 					`**Ordered from:** #${call.message.channel.name} (${call.message.channel.id}) in ${call.message.guild.name} (${call.message.guild.id})\n` +
-					`**Status:** Awaiting a cook\n`);
+					"**Status:** Awaiting a cook\n");
 			}).catch((err) => {
 				if (err) {
 					call.message.reply(`There was a database error! Show the following message to a developer: \`\`\`${err}\`\`\``);

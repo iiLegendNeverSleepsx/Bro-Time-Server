@@ -28,8 +28,8 @@ module.exports = {
 				ordersChan.send("__**Order**__\n" +
 					`**OrderID:** ${orderID}\n` +
 					`**Order:** ${order}\n` +
-					`**Customer:** ${call.message.author.tag} (${call.message.author.id})\n`
-					`**Ordered from:** #${call.message.channel.name} (${call.message.channel.id}) in ${call.message.guild.name} (${call.message.guild.id})\n`
+					`**Customer:** ${call.message.author.tag} (${call.message.author.id})\n` +
+					`**Ordered from:** #${call.message.channel.name} (${call.message.channel.id}) in ${call.message.guild.name} (${call.message.guild.id})\n` +
 					`**Status:** Awaiting a cook\n`);
 			}).catch((err) => {
 				if (err) {
